@@ -9,3 +9,8 @@ data_*/
 
 #VS Code ignores
 .vs/
+
+#Builds
+bin/
+*sconsign.*
+*.os

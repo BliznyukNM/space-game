@@ -5,19 +5,29 @@ var bodies : Array
 var time_scale := 0.0
 
 
+export var simulation_count := 100
+
+
+onready var celestial_physics := $"/root/CelestialPhysics"
+
+
 func _ready() -> void:
-	bodies = get_tree().get_nodes_in_group("celestial")
+	bodies = $"Planets".get_children()
 
 
 func _process(delta: float) -> void:
-	delta *= time_scale
+	for body in bodies:
+		body.reset()
+		body.clear()
+		body.begin(PrimitiveMesh.PRIMITIVE_LINES)
+		body.set_color(Color(1, 1, 1))
+		body.add_vertex(body.transform.origin)
+	
+	for i in range(0, simulation_count):
+		celestial_physics.update_bodies(bodies, delta)
+		
+		for body in bodies:
+			body.add_vertex(body.current_position)
 	
 	for body in bodies:
-		body.update_velocity(bodies, delta)
-	
-	for body in bodies:
-		body.update_position(delta)
-
-
-func _on_change_time_scale(value) -> void:
-	time_scale = value
+		body.end()

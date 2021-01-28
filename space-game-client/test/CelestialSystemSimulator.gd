@@ -3,7 +3,7 @@ extends Node
 
 
 export var steps := 10
-export var delta := 0.25
+export var simulate_delta := 0.25
 export var enable_simulation : bool
 
 
@@ -53,11 +53,11 @@ func _draw_simulation() -> void:
 	for nbody in nbodies:
 		rbodies.append(RawBody.new(nbody))
 	
-	for i in range(0, steps):
+	for _i in range(0, steps):
 		for rbody in rbodies:
-			Newton.apply_gravitation(rbody, rbodies, delta)
+			Newton.apply_gravitation(rbody, rbodies, simulate_delta)
 		for rbody in rbodies:
-			rbody.position += rbody.velocity * delta
+			rbody.position += rbody.velocity * simulate_delta
 			rbody.path.append(rbody.position)
 	
 	$Drawer.clear()

@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://test/CelestialSystemSimulator.gd" type="Script" id=1]
+[ext_resource path="res://test/SolarSystem/Sun.tscn" type="PackedScene" id=2]
+[ext_resource path="res://test/SolarSystem/Venus.tscn" type="PackedScene" id=3]
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+
+[node name="SystemA" type="Node"]
+script = ExtResource( 1 )
+steps = 200
+enable_simulation = true
+
+[node name="NBodies" type="Node" parent="."]
+
+[node name="Sun" parent="NBodies" instance=ExtResource( 2 )]
+mass = 10000.0
+debug_color = Color( 1, 1, 0, 1 )
+
+[node name="Venus" parent="NBodies" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8821, -1.90735e-06, 3.94121 )
+mass = 10.0
+velocity = Vector3( 0, 6.624, 0 )
+debug_color = Color( 0.0745098, 0.909804, 0.772549, 1 )
+
+[node name="Mercury" parent="NBodies" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.3273, -1.90735e-06, -3.95675 )
+mass = 15.0
+velocity = Vector3( 0, 4.706, 0 )
+debug_color = Color( 0.196078, 0.368627, 0.188235, 1 )
+
+[node name="Drawer" type="ImmediateGeometry" parent="."]
+material_override = SubResource( 1 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25.2915 )
+fov = 100.0
+far = 1000.0

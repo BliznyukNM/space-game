@@ -9,29 +9,25 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "KinematicBody",
-"class": "Celestial",
+"base": "Spatial",
+"class": "NBody",
 "language": "GDScript",
-"path": "res://src/Celestial.gd"
+"path": "res://src/NBody.gd"
 }, {
-"base": "Control",
-"class": "TimeControl",
+"base": "Reference",
+"class": "Newton",
 "language": "GDScript",
-"path": "res://src/TimeControl.gd"
+"path": "res://src/Newton.gd"
 } ]
 _global_script_class_icons={
-"Celestial": "",
-"TimeControl": ""
+"NBody": "",
+"Newton": ""
 }
 
 [application]
 
 config/name="Space Game"
 config/icon="res://icon.png"
-
-[autoload]
-
-CelestialPhysics="*res://src/CelestialPhysics.gd"
 
 [display]
 

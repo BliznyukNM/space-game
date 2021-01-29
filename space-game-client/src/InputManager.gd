@@ -1,13 +1,20 @@
 extends Node
 
 
-onready var character := $"../Character"
+export var character_node : NodePath
+
+
+onready var character := get_node(character_node)
 
 onready var camera := $"../Camera"
 onready var camera_pivot := $"../Camera/Pivot"
 
 
 export var mouse_sensitivity = 0.002
+
+
+func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
 func _input(event: InputEvent) -> void:

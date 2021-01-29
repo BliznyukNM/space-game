@@ -1,0 +1,7 @@
+[gd_scene format=2]
+
+[node name="Camera" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.8075 )
+
+[node name="Pivot" type="Camera" parent="."]
+far = 1000.0

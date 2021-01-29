@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Spatial",
 "class": "NBody",
 "language": "GDScript",
-"path": "res://src/NBody.gd"
+"path": "res://src/NewtonBodies/NBody.gd"
 }, {
 "base": "Reference",
 "class": "Newton",

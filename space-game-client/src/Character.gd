@@ -4,13 +4,13 @@ extends Spatial
 export var speed := 10.0
 
 
-var current_velocity : Vector3
+var velocity : Vector3
 
 
-func move(direction : Vector3) -> void:
-	current_velocity = direction * speed
+func move(direction : Vector3, delta : float) -> void:
+	var q_rotation = Quat(rotation)
+	velocity += q_rotation * direction * speed * delta
 
 
 func _process(delta: float) -> void:
-	var q_rotation = Quat(rotation)
-	translation += q_rotation * current_velocity * delta
+	translation += velocity * delta

@@ -22,9 +22,10 @@ func _process(delta: float) -> void:
 		
 	move_direction.z = Input.get_action_strength("character_backward") - Input.get_action_strength("character_forward")
 	move_direction.x = Input.get_action_strength("character_right") - Input.get_action_strength("character_left")
+	move_direction.y = Input.get_action_strength("character_up") - Input.get_action_strength("character_down")
 	
 	if move_direction.length_squared() > 1: move_direction = move_direction.normalized()
-	character.move(move_direction)
+	character.move(move_direction, delta)
 	
 	# Update camera and character position and rotation
 	character.rotation = Quat(camera_pivot.global_transform.basis).get_euler()

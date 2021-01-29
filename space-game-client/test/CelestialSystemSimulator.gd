@@ -9,17 +9,17 @@ export var enable_simulation : bool
 
 class RawBody:
 	var mass : float
-	var position : Vector3
+	var translation : Vector3
 	var velocity : Vector3
 	var color : Color
 	var path := Array()
 	
 	func _init(nbody : NBody) -> void:
 		mass = nbody.mass
-		position = nbody.translation
+		translation = nbody.translation
 		velocity = nbody.velocity
 		color = nbody.debug_color
-		path.append(position)
+		path.append(translation)
 
 
 func _ready() -> void:
@@ -40,7 +40,9 @@ func _simulate(delta : float) -> void:
 		Newton.apply_gravitation(nbody, nbodies, delta)
 	
 	for nbody in nbodies:
-		nbody.position += nbody.velocity * delta
+		nbody.translation += nbody.velocity * delta
+	
+	Newton.apply_gravitation($Character, nbodies, delta)
 
 
 func _draw_simulation() -> void:
@@ -57,8 +59,8 @@ func _draw_simulation() -> void:
 		for rbody in rbodies:
 			Newton.apply_gravitation(rbody, rbodies, simulate_delta)
 		for rbody in rbodies:
-			rbody.position += rbody.velocity * simulate_delta
-			rbody.path.append(rbody.position)
+			rbody.translation += rbody.velocity * simulate_delta
+			rbody.path.append(rbody.translation)
 	
 	$Drawer.clear()
 	for rbody in rbodies:

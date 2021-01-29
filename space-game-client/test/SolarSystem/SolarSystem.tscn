@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://test/CelestialSystemSimulator.gd" type="Script" id=1]
 [ext_resource path="res://test/SolarSystem/Sun.tscn" type="PackedScene" id=2]
 [ext_resource path="res://test/SolarSystem/Venus.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/Character.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/InputManager.gd" type="Script" id=5]
 
 [sub_resource type="SpatialMaterial" id=1]
 flags_unshaded = true
@@ -34,7 +36,14 @@ debug_color = Color( 0.196078, 0.368627, 0.188235, 1 )
 [node name="Drawer" type="ImmediateGeometry" parent="."]
 material_override = SubResource( 1 )
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25.2915 )
-fov = 100.0
+[node name="Character" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15 )
+
+[node name="InputManager" type="Node" parent="."]
+script = ExtResource( 5 )
+
+[node name="Camera" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.8075 )
+
+[node name="Pivot" type="Camera" parent="Camera"]
 far = 1000.0

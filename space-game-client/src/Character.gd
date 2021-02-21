@@ -10,6 +10,7 @@ var _gravity_up: Vector3
 var _planet: NBody
 var _velocity: Vector3
 var _input: Vector3
+var _is_jump_pressed: bool
 
 
 func apply_gravity(gravity: Vector3, gravity_up: Vector3, planet: NBody) -> void:
@@ -19,18 +20,21 @@ func apply_gravity(gravity: Vector3, gravity_up: Vector3, planet: NBody) -> void
 
 
 func move(input: Vector3) -> void:
-	_input = Quat(rotation) * input
+	_input = Quat(rotation) * Vector3(input.x, 0, input.z)
+	_is_jump_pressed = input.y > 0.0
 
 
 func _physics_process(delta: float) -> void:
 	_align_gravity()
+
+	if _is_jump_pressed:
+		_velocity = _gravity_up * 5.0
 	
-	
-	if not is_on_floor():
+	if not is_on_floor() or _velocity.dot(_gravity_up) > 0.95:
 		_velocity += _gravity * delta
 		_velocity = move_and_slide(_velocity, _gravity_up, true)
 	else:
-		_velocity = Vector3.ZERO
+		_velocity = _gravity
 	
 	translation += _planet.velocity * delta
 	translation += _input * speed * delta

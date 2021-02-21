@@ -7,5 +7,9 @@ export var velocity : Vector3
 export var debug_color := Color.white
 
 
-func _process(delta: float) -> void:
+func apply_gravity(gravity: Vector3, delta: float) -> void:
+	velocity += gravity * delta
+
+
+func proceed_gravity(delta: float) -> void:
 	translation += velocity * delta

@@ -19,7 +19,6 @@ enable_simulation = true
 [node name="NBodies" type="Node" parent="."]
 
 [node name="Sun" parent="NBodies" instance=ExtResource( 2 )]
-mass = 10000.0
 debug_color = Color( 1, 1, 0, 1 )
 
 [node name="Venus" parent="NBodies" instance=ExtResource( 3 )]
@@ -42,5 +41,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15 )
 
 [node name="InputManager" type="Node" parent="."]
 script = ExtResource( 5 )
+character_node = NodePath("../Character")
 
 [node name="Camera" parent="." instance=ExtResource( 6 )]

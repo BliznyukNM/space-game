@@ -6,13 +6,19 @@ var sbodies : Array # SimulatedBodies that are only affected by NewtonBodies
 
 
 func _ready() -> void:
-	nbodies = $Bodies.get_tree().get_nodes_in_group("nbody")
-	sbodies = $Bodies.get_tree().get_nodes_in_group("sbody")
+	nbodies = get_tree().get_nodes_in_group("nbody")
+	sbodies = get_tree().get_nodes_in_group("sbody")
 
 
-func _process(delta : float) -> void:
+func _physics_process(delta: float) -> void:
 	for nbody in nbodies:
-		Newton.apply_gravitation(nbody, nbodies, delta)
+		Newton.apply_gravity(nbody, nbodies, delta)
 	
 	for sbody in sbodies:
-		Newton.apply_gravitation(sbody, nbodies, delta)
+		Newton.apply_gravity(sbody, nbodies, delta)
+	
+	for nbody in nbodies:
+		nbody.proceed_gravity(delta)
+	
+	for sbody in sbodies:
+		sbody.proceed_gravity(delta)

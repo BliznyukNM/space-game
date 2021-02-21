@@ -42,7 +42,7 @@ func _simulate(delta : float) -> void:
 	for nbody in nbodies:
 		nbody.translation += nbody.velocity * delta
 	
-	Newton.apply_gravitation($Character, nbodies, delta)
+	#Newton.apply_gravitation($Character, nbodies, delta)
 
 
 func _draw_simulation() -> void:

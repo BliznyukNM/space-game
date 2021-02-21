@@ -3,7 +3,6 @@
 [ext_resource path="res://test/CelestialSystemSimulator.gd" type="Script" id=1]
 [ext_resource path="res://src/NewtonBodies/NBody.tscn" type="PackedScene" id=2]
 
-
 [sub_resource type="SpatialMaterial" id=1]
 flags_unshaded = true
 vertex_color_use_as_albedo = true

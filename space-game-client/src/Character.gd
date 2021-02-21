@@ -37,7 +37,7 @@ func _physics_process(delta: float) -> void:
 	
 	if not on_ground:
 		_velocity += _gravity * delta
-		_velocity = move_and_slide(_velocity, _gravity_up, false, 1)
+		_velocity = move_and_slide(_velocity, _gravity_up, true, 1)
 	else:
 		_velocity = Vector3.ZERO
 

@@ -5,12 +5,12 @@
 [ext_resource path="res://src/Simulation.gd" type="Script" id=3]
 [ext_resource path="res://src/InputManager.gd" type="Script" id=4]
 
-[sub_resource type="CylinderMesh" id=1]
-bottom_radius = 2.0
-height = 4.0
-
 [sub_resource type="CylinderShape" id=2]
 radius = 2.0
+height = 4.0
+
+[sub_resource type="CylinderMesh" id=1]
+bottom_radius = 2.0
 height = 4.0
 
 [node name="PlanetWalk" type="Node"]
@@ -28,15 +28,22 @@ transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0 )
 mass = 1000.0
 velocity = Vector3( 10, 10, 10 )
 
-[node name="Area" type="StaticBody" parent="Planet"]
+[node name="CollisionShape2" type="CollisionShape" parent="Planet"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 1.15301, 0 )
+shape = SubResource( 2 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Planet/Area"]
+[node name="MeshInstance" type="MeshInstance" parent="Planet/CollisionShape2"]
 mesh = SubResource( 1 )
 material/0 = null
 
-[node name="CollisionShape" type="CollisionShape" parent="Planet/Area"]
+[node name="CollisionShape3" type="CollisionShape" parent="Planet"]
+transform = Transform( 0.049514, 0.0868813, 0, -0.0868813, 0.049514, 0, 0, 0, 0.1, 1.05463, 0.532885, 0 )
 shape = SubResource( 2 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Planet/CollisionShape3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = null
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 

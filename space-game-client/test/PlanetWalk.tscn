@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/NewtonBodies/Planet.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Character.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Simulation.gd" type="Script" id=3]
+[ext_resource path="res://src/InputManager.gd" type="Script" id=4]
 
 [node name="PlanetWalk" type="Node"]
 script = ExtResource( 3 )
@@ -20,3 +21,7 @@ mass = 1000.0
 velocity = Vector3( 10, 10, 10 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
+
+[node name="InputManager" type="Node" parent="."]
+script = ExtResource( 4 )
+character_node = NodePath("../Walker")

@@ -35,10 +35,6 @@ _global_script_class_icons={
 config/name="Space Game"
 config/icon="res://icon.png"
 
-[display]
-
-window/size/always_on_top=true
-
 [input]
 
 character_forward={

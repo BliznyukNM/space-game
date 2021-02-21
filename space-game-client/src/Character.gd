@@ -27,14 +27,16 @@ func move(input: Vector3) -> void:
 func _physics_process(delta: float) -> void:
 	_align_gravity()
 
-	if _is_jump_pressed:
-		_velocity = _gravity_up * 5.0
+	if _is_jump_pressed and is_on_floor():
+		_velocity += _gravity_up * 5
+		_velocity = move_and_slide(_velocity, _gravity_up, false, 0)
+		print("Gravity up: ", _gravity_up, ", Velocity: ", _velocity)
 	
-	if not is_on_floor() or _velocity.dot(_gravity_up) > 0.95:
+	if not is_on_floor():
 		_velocity += _gravity * delta
 		_velocity = move_and_slide(_velocity, _gravity_up, true)
 	else:
-		_velocity = _gravity
+		_velocity = Vector3.ZERO
 	
 	translation += _planet.velocity * delta
 	translation += _input * speed * delta

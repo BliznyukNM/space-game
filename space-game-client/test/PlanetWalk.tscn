@@ -17,6 +17,6 @@ fov = 90.0
 [node name="Planet" parent="." instance=ExtResource( 1 )]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0 )
 mass = 1000.0
-velocity = Vector3( 10, 10, 0 )
+velocity = Vector3( 10, 10, 10 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]

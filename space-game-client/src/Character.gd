@@ -22,8 +22,12 @@ func _physics_process(delta: float) -> void:
 	var input: = _get_input()
 	input = Quat(rotation) * input
 	
-	_velocity += _gravity * delta
-	_velocity = move_and_slide(_velocity, _gravity_up, true)
+	if not is_on_floor():
+		_velocity += _gravity * delta
+		_velocity = move_and_slide(_velocity, _gravity_up, true)
+	else:
+		_velocity = Vector3.ZERO
+	
 	translation += _planet.velocity * delta
 	translation += input * speed * delta
 

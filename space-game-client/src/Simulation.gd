@@ -12,13 +12,10 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	for nbody in nbodies:
-		Newton.apply_gravity(nbody, nbodies, delta)
+		Newton.apply_gravity_nbody(nbody, nbodies)
 	
 	for sbody in sbodies:
-		Newton.apply_gravity(sbody, nbodies, delta)
+		Newton.apply_gravity_sbody(sbody, nbodies)
 	
 	for nbody in nbodies:
 		nbody.proceed_gravity(delta)
-	
-	for sbody in sbodies:
-		sbody.proceed_gravity(delta)

@@ -1,7 +1,7 @@
 class_name Newton
 
 
-const G := 0.5
+const G := 10
 
 
 static func _get_gravity_acceleration(body_a, body_b) -> Vector3:

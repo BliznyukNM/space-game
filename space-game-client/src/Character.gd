@@ -32,19 +32,21 @@ func _physics_process(delta: float) -> void:
 	var on_ground: = _is_touchin_ground()
 
 	if _is_jump_pressed and on_ground:
-		_velocity = move_and_slide(_gravity_up * 5, _gravity_up, false, 0)
+		_velocity += _gravity_up * 5
 		on_ground = false
+		translation += _velocity * delta
 	
 	if not on_ground:
 		_velocity += _gravity * delta
-		_velocity = move_and_slide(_velocity, _gravity_up, true, 1)
 	else:
 		_velocity = Vector3.ZERO
+	
+	move_and_collide(_velocity * delta)
 
 
 func _is_touchin_ground() -> bool:
 	var space_state: = get_world().direct_space_state
-	var result: = space_state.intersect_ray(translation, translation - transform.basis.y * 0.1, [self])
+	var result: = space_state.intersect_ray(translation, translation + _gravity.normalized() * 0.1, [self])
 	return not result.empty()
 
 

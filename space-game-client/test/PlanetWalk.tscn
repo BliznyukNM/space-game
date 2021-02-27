@@ -19,14 +19,10 @@ script = ExtResource( 3 )
 [node name="Walker" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.85038, 8.92824, 0 )
 
-[node name="Camera" type="Camera" parent="Walker"]
-transform = Transform( -1, -8.43339e-08, 3.14738e-07, 0, 0.965925, 0.258819, -3.25841e-07, 0.258819, -0.965925, 0, 2, 0 )
-fov = 90.0
-
 [node name="Planet" parent="." instance=ExtResource( 1 )]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0 )
-mass = 1000.0
-velocity = Vector3( 10, 10, 10 )
+mass = 200.0
+velocity = Vector3( 1, 0, 0 )
 
 [node name="CollisionShape2" type="CollisionShape" parent="Planet"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 1.15301, 0 )
@@ -50,3 +46,4 @@ material/0 = null
 [node name="InputManager" type="Node" parent="."]
 script = ExtResource( 4 )
 character_node = NodePath("../Walker")
+mouse_sensitivity = 0.003

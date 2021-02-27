@@ -14,3 +14,4 @@ data_*/
 bin/
 *sconsign.*
 *.os
+.DS_Store

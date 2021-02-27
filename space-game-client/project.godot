@@ -20,14 +20,14 @@ _global_script_classes=[ {
 "path": "res://src/NewtonBodies/NBody.gd"
 }, {
 "base": "Reference",
-"class": "Newton",
+"class": "Newton_old",
 "language": "GDScript",
-"path": "res://src/Newton.gd"
+"path": "res://src/NewtonOld.gd"
 } ]
 _global_script_class_icons={
 "Character": "",
 "NBody": "",
-"Newton": ""
+"Newton_old": ""
 }
 
 [application]
